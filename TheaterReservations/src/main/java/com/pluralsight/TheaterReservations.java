@@ -127,7 +127,9 @@ public class TheaterReservations {
     // USE THIS FOR THE LOVE OF GOD. GREAT FREAKING METHOD ------------------------------------------------------------
     public static String nameToPartsToName (String name) {
         String [] nameParts = name.trim().split(" ");
+
         String fullName = "";
+
         if (nameParts.length == 3) {
             String firstName = nameParts [0].toLowerCase().substring(0, 1).toUpperCase() + nameParts[0].substring(1);
             String middleName = nameParts [1].toLowerCase().substring(0, 1).toUpperCase() + nameParts[1].substring(1);;
