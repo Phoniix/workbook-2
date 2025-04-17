@@ -23,6 +23,14 @@ public class CellPhoneApplication {
         astewayCell.setPhoneNumber("(214) 441-2025");
         astewayCell.setSerialNumber(000000001);
 
+        // Introducing Third Phone for Testing Purposes ---------------------------------------------------------------
+        String phoneThreeOwner = "TheMan";
+        String phoneThreeModel = "iPhone";
+        String phoneThreeCarrier = "Metro Pcs";
+        String phoneThreePhoneNum = "(333) 333-3333";
+        long phoneThreeSerial = 333333333;
+        CellPhone phoneThree = new CellPhone(phoneThreeSerial, phoneThreeModel, phoneThreeCarrier, phoneThreePhoneNum, phoneThreeOwner);
+
         // Introducing the System -------------------------------------------------------------------------------------
         String introMessage = "set up your brand new phone!";
         CodeSnippetsAndFunctions.introduceTheSystem(introMessage);
@@ -50,18 +58,23 @@ public class CellPhoneApplication {
         serialNumber = CodeSnippetsAndFunctions.customLongInput(longName);
         userCell.setSerialNumber(serialNumber);
 
+        // ADDING PHONES TO REGISTRY ----------------------------------------------------------------------------------
+        CellPhone.phoneRegistry.add(userCell);
+        CellPhone.phoneRegistry.add(astewayCell);
+
+        // Result Breakdown -------------------------------------------------------------------------------------------
+        System.out.println("-------------------------------");
+        for (CellPhone phone : CellPhone.getAllPhones()) {
+            phone.displayInfo();
+
         // Dial another Phone number ----------------------------------------------------------------------------------
         System.out.println("-------------------------------");
-        userCell.dial("(214) 441-2025");
-        userCell.dial(astewayCell.getPhoneNumber());
+        userCell.dial("(333) 333-3333");
+        phoneThree.dial("(214) 441-2025");
         astewayCell.dial(userCell.getPhoneNumber());
         System.out.println("-------------------------------");
 
-        // Result Breakdown -------------------------------------------------------------------------------------------
-        System.out.println("\nHere is your information breakdown!");
-        userCell.displayInfo();
-        System.out.println("-------------------------------");
-        astewayCell.displayInfo();
+        }
 
 
     }

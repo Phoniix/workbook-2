@@ -185,7 +185,7 @@ public class CodeSnippetsAndFunctions {
         boolean confirmed = false;
         Scanner scanner = new Scanner(System.in);
         while (!confirmed) {
-            System.out.println("What is your " + longName + "?");
+            System.out.println("\nWhat is your " + longName + "?");
             System.out.println("Enter: ");
             try {
                 customNumberInput = Long.parseLong(scanner.nextLine().toLowerCase().trim());
