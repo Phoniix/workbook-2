@@ -71,7 +71,19 @@ public class CodeSnippetsAndFunctions {
                 try {
                     userPhoneNumber = scanner.nextLine().toLowerCase().trim();
                     userPhoneNumber = userPhoneNumber.replaceAll("[^0-9]", "");
-                    userPhoneNumber = "(" + userPhoneNumber.substring(0, 3) + ") " + userPhoneNumber.substring(3, 6) + "-" + userPhoneNumber.substring(6, 10);
+
+                    if (userPhoneNumber.length() < 10) {
+                        System.out.println("-------------------------------");
+                        System.out.println("Invalid Input: NEED MORE NUMBERS");
+                        System.out.println("-------------------------------");
+                        continue;
+                    } else {
+                        userPhoneNumber = "(" + userPhoneNumber.substring(0, 3) + ") " + userPhoneNumber.substring(3, 6) + "-" + userPhoneNumber.substring(6, 10);
+                    }
+                } catch (ArithmeticException e) {
+                    System.out.println("-------------------------------");
+                    System.out.println("Invalid Input: NUMBERS ONLY");
+                    System.out.println("-------------------------------");
                 } catch (NumberFormatException e) {
                     System.out.println("-------------------------------");
                     System.out.println("Invalid Input: NUMBERS ONLY");

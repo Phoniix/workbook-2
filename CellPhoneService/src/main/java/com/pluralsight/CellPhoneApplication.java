@@ -15,7 +15,13 @@ public class CellPhoneApplication {
         String phoneNumber;
         String owner;
 
-
+        // Introduce Second Phone (Dialer Phone) ----------------------------------------------------------------------
+        CellPhone astewayCell = new CellPhone();
+        astewayCell.setOwner("Asteway N.");
+        astewayCell.setModel("Android");
+        astewayCell.setCarrier("Sprint");
+        astewayCell.setPhoneNumber("(214) 441-2025");
+        astewayCell.setSerialNumber(000000001);
 
         // Introducing the System -------------------------------------------------------------------------------------
         String introMessage = "set up your brand new phone!";
@@ -44,9 +50,19 @@ public class CellPhoneApplication {
         serialNumber = CodeSnippetsAndFunctions.customLongInput(longName);
         userCell.setSerialNumber(serialNumber);
 
+        // Dial another Phone number ----------------------------------------------------------------------------------
+        System.out.println("-------------------------------");
+        userCell.dial("(214) 441-2025");
+        userCell.dial(astewayCell.getPhoneNumber());
+        astewayCell.dial(userCell.getPhoneNumber());
+        System.out.println("-------------------------------");
+
         // Result Breakdown -------------------------------------------------------------------------------------------
         System.out.println("\nHere is your information breakdown!");
         userCell.displayInfo();
+        System.out.println("-------------------------------");
+        astewayCell.displayInfo();
+
 
     }
 

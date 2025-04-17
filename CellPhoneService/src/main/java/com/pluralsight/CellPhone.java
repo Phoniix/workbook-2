@@ -62,7 +62,14 @@ public class CellPhone {
         System.out.println("Your Device Model: " + model);
         System.out.println("Your Carrier Service: " + carrier);
         System.out.println("Your Phone Number: " + phoneNumber);
-        System.out.println(" Your Serial Number: " + serialNumber);
+        System.out.println("Your Serial Number: " + serialNumber);
+    }
+
+    public void dial (String numberToDial) {
+        System.out.println(this.owner +  " is calling " + numberToDial);
+        if (numberToDial.equals(phoneNumber)) {
+            System.out.println(this.owner + " is calling " + numberToDial);
+        }
     }
 
 
