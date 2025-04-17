@@ -219,4 +219,159 @@ public class CodeSnippetsAndFunctions {
         return customNumberInput;
     }
 
+    public static String questionnaire () {
+        String userName = "";
+        String userColor = "";
+        String userShape = "";
+        String userNumber = "";
+        boolean confirmed = false;
+        Scanner scanner = new Scanner(System.in);
+
+            System.out.println("What is your name?");
+            System.out.println("Enter: ");
+            userName = scanner.nextLine().toLowerCase().trim();
+
+            System.out.println("What is your favorite color?");
+            System.out.println("Enter: ");
+            userColor = scanner.nextLine().toLowerCase().trim();
+
+            System.out.println("What is your favorite shape?");
+            System.out.println("Enter: ");
+            userShape = scanner.nextLine().toLowerCase().trim();
+
+            System.out.println("What is your favorite number?");
+            System.out.println("Enter: ");
+            userNumber = scanner.nextLine().toLowerCase().trim();
+
+            // Confirm All -------------------------------------------------------------------------------------------
+            while (!confirmed) {
+            System.out.println("Is all of your info correct? (Y) or (N).");
+            System.out.println("[" + nameToPartsToName(userName) + "]");
+            System.out.println("[" + nameToPartsToName(userColor) + "]");
+            System.out.println("[" + nameToPartsToName(userShape) + "]");
+            System.out.println("[" + nameToPartsToName(userNumber) + "]");
+            System.out.println("(Y)es");
+            System.out.println("(N)o");
+            char isRight = scanner.nextLine().toUpperCase().charAt(0);
+
+            if (isRight == 'Y') {
+                break;
+            } else if (isRight == 'N') {
+                boolean doubleCheck = false;
+                while (!doubleCheck) {
+                    System.out.println("Which part needs changing?");
+                    System.out.println("(A) [" + nameToPartsToName(userName) + "]");
+                    System.out.println("(B) [" + nameToPartsToName(userColor) + "]");
+                    System.out.println("(C) [" + nameToPartsToName(userShape) + "]");
+                    System.out.println("(D) [" + nameToPartsToName(userNumber) + "]");
+                    char check = scanner.nextLine().toUpperCase().charAt(0);
+
+                    if (check == 'A') {
+                        System.out.println("What is your name?");
+                        System.out.println("Enter: ");
+                        userName = scanner.nextLine().toLowerCase().trim();
+                        break;
+                    } else if (check == 'B') {
+                        System.out.println("What is your favorite color?");
+                        System.out.println("Enter: ");
+                        userColor = scanner.nextLine().toLowerCase().trim();
+                        break;
+                    } else if (check == 'C') {
+                        System.out.println("What is your favorite shape?");
+                        System.out.println("Enter: ");
+                        userShape = scanner.nextLine().toLowerCase().trim();
+                        break;
+                    } else if (check == 'D') {
+                        System.out.println("What is your favorite number?");
+                        System.out.println("Enter: ");
+                        userNumber = scanner.nextLine().toLowerCase().trim();
+                        break;
+                    } else {
+                        System.out.println("-------------------------------");
+                        System.out.println("Invalid Input: DO OVER");
+                        System.out.println("-------------------------------");
+                    }
+                } continue;
+            } else {
+                System.out.println("-------------------------------");
+                System.out.println("Invalid Input: DO OVER");
+                System.out.println("-------------------------------");
+            }
+        }
+
+
+        return nameToPartsToName(userName);
+    }
+
+    public static void confirmAllFive (String message, String messageTwo, String messageThree, String messageFour, String messageFive) {
+        Scanner scanner = new Scanner(System.in);
+        boolean confirmed = false;
+
+        //Ask the questions -------------------------------------------------------------------------------------------
+        String question = messageAndResponse(message);
+        String questionTwo = messageAndResponse(messageTwo);
+        String questionThree = messageAndResponse(messageThree);
+        String questionFour = messageAndResponse(messageFour);
+        String questionFive = messageAndResponse(messageFive);
+
+        // Confirm All ------------------------------------------------------------------------------------------------
+        while (!confirmed) {
+            System.out.println("\nIs all of your info correct? (Y) or (N).");
+            System.out.println("[" + nameToPartsToName(question) + "]");
+            System.out.println("[" + nameToPartsToName(questionTwo) + "]");
+            System.out.println("[" + nameToPartsToName(questionThree) + "]");
+            System.out.println("[" + nameToPartsToName(questionFour) + "]");
+            System.out.println("[" + nameToPartsToName(questionFive) + "]");
+            System.out.println("\n(Y)es or (N)o ?");
+            char isRight = scanner.nextLine().toUpperCase().charAt(0);
+
+            if (isRight == 'Y') {
+                break;
+            } else if (isRight == 'N') {
+                boolean doubleCheck = false;
+                while (!doubleCheck) {
+                    System.out.println("\nWhich part needs changing?");
+                    System.out.println("(A) [" + nameToPartsToName(question) + "]");
+                    System.out.println("(B) [" + nameToPartsToName(questionTwo) + "]");
+                    System.out.println("(C) [" + nameToPartsToName(questionThree) + "]");
+                    System.out.println("(D) [" + nameToPartsToName(questionFour) + "]");
+                    System.out.println("(E) [" + nameToPartsToName(questionFive) + "]");
+                    System.out.println("Enter here: ");
+                    char check = scanner.nextLine().toUpperCase().charAt(0);
+
+                    if (check == 'A') {
+                        question = messageAndResponse(message);
+                        break;
+                    } else if (check == 'B') {
+                        questionTwo = messageAndResponse(messageTwo);
+                        break;
+                    } else if (check == 'C') {
+                        questionThree = messageAndResponse(messageThree);
+                        break;
+                    } else if (check == 'D') {
+                        questionFour = messageAndResponse(messageFour);
+                        break;
+                    } else if (check == 'E') {
+                        questionFive = messageAndResponse(messageFive);
+                    } else {
+                        System.out.println("-------------------------------");
+                        System.out.println("Invalid Input: DO OVER");
+                        System.out.println("-------------------------------");
+                    }
+                } continue;
+            } else {
+                System.out.println("-------------------------------");
+                System.out.println("Invalid Input: DO OVER");
+                System.out.println("-------------------------------");
+            }
+        }
+
+    }
+
+    static String messageAndResponse (String message) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(message);
+        return scanner.nextLine();
+    }
+
 }

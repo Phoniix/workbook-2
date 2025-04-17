@@ -120,4 +120,10 @@ public static ArrayList<CellPhone> phoneRegistry = new ArrayList<>();
         return this.serialNumber == serialNumber;
     }
 
+    static String messageAndResponse (String message) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(message);
+        return scanner.nextLine();
+    }
+
 }
