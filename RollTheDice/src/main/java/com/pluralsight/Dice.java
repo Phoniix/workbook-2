@@ -10,26 +10,30 @@ public class Dice {
         int fourCounter = 0;
         int sixCounter = 0;
         int sevenCounter = 0;
-        int index = 0;
+        int index = 1;
 
-        while (index != 100) {
+        while (index != 101) {
             rollOne = Dice.roll(1,6);
             rollTwo = Dice.roll(1,6);
-            System.out.println("Die 1: " + rollOne + " // " + "Die 2: " + rollTwo);
+            System.out.println("Roll " + index + ": " + rollOne + " - " + rollTwo + " Sum: " + (rollOne+rollTwo));
 
 
             if (rollTwo + rollOne == 2) {
                 twoCounter += 1;
                 System.out.println("\nTwo Counter: " + twoCounter);
+                System.out.println();
             } if (rollTwo + rollOne == 4) {
                 fourCounter += 1;
                 System.out.println("\nFour Counter: " + fourCounter);
+                System.out.println();
             } if (rollTwo + rollOne == 6) {
                 sixCounter += 1;
                 System.out.println("\nSix Counter: " + sixCounter);
+                System.out.println();
             } if (rollTwo + rollOne == 7) {
                 sevenCounter += 1;
                 System.out.println("\nSeven Counter: " + sevenCounter);
+                System.out.println();
             }
             index += 1;
         }
