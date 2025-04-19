@@ -299,7 +299,7 @@ public class VehicleInventory {
                     }
 
                 }
-            }
+            } // For Loop End // --------------------------------------------------------------------------------------
             if (found) { // If Found = True // Immediately Asks If You Want To Try Another ----------------------------
                 System.out.println("\nSearch Again?");
                 System.out.println("(Y)es or (N)o");
