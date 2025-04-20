@@ -96,7 +96,7 @@ public class NeighborhoodLibrary {
                         System.out.println("Code Broke");
                         throw new RuntimeException();
                     }
-                    return;
+                    keepGoing = false;
                 } else {
                     System.out.println("\n----------------------------");
                     System.out.println("Invalid Input. (1), (2), or (3).");
@@ -137,7 +137,7 @@ public class NeighborhoodLibrary {
                     throw new RuntimeException();
                 }
 
-                if (!book.getIsBookIsCheckedOut() && book != null) {
+                if (!book.getIsBookIsCheckedOut()) {
                     System.out.println("\n---------------------------------------------");
                     System.out.println("Book Entry #: " + book.getBookID());
                     System.out.println("Book ISBN: " + book.getBookISBN());
@@ -184,7 +184,7 @@ public class NeighborhoodLibrary {
                                 }
 
                                 for (Book book : bookInventory) {
-                                    if (userBookSelect == book.getBookID() && book != null && !book.getIsBookIsCheckedOut()) {
+                                    if (userBookSelect == book.getBookID() && !book.getIsBookIsCheckedOut()) {
                                         System.out.println("\n---------------------------------------------");
                                         System.out.println("Book Entry #: " + book.getBookID());
                                         System.out.println("Book ISBN: " + book.getBookISBN());
@@ -244,14 +244,17 @@ public class NeighborhoodLibrary {
                                                         System.out.println("Code Broke");
                                                         throw new RuntimeException();
                                                     }
-                                                    return;
+                                                    userConfirm = true;
+                                                    confirmCheck = true;
+                                                    selectConfirm = true;
+                                                    keepGoing = false;
                                                 } else if (nameConfirm == 'N') {
-                                                    continue;
+                                                    userConfirm = true;
                                                 } else {
                                                     System.out.println("\n----------------------------");
                                                     System.out.println("Invalid Input. (Y) or (N).");
                                                     System.out.println("----------------------------");
-                                                    continue;
+
                                                 }
                                             }
 
@@ -286,7 +289,6 @@ public class NeighborhoodLibrary {
                             if (browseSelect == 'C') {
                                 doneBrowsing = true;
                                 //confirmCheck = true;
-                                break;
                             } else if (browseSelect == 'X') {
                                 System.out.println("\nReturning to Main Screen...");
                                 System.out.println("Just a sec...");
@@ -297,11 +299,7 @@ public class NeighborhoodLibrary {
                                     System.out.println("Code Broke");
                                     throw new RuntimeException();
                                 }
-
-                                doneBrowsing = true;
-                                confirmCheck = true;
-                                keepGoing = false;
-                                break;
+                                return;
                             } else {
                                 System.out.println("\n----------------------------");
                                 System.out.println("Invalid Input. (Y) or (N).");
@@ -332,7 +330,7 @@ public class NeighborhoodLibrary {
                 throw new RuntimeException();
             }
 
-            boolean foundResult = false;
+
             for (Book book : bookInventory) {
                 // Timer Between Each Display // --------------------------------------------------------------------------
                 try {
@@ -342,14 +340,13 @@ public class NeighborhoodLibrary {
                     throw new RuntimeException();
                 }
 
-                if (book.getIsBookIsCheckedOut() && book != null) {
+                if (book.getIsBookIsCheckedOut()) {
                     System.out.println("\n---------------------------------------------");
                     System.out.println("Book Entry #: " + book.getBookID());
                     System.out.println("Book ISBN: " + book.getBookISBN());
                     System.out.println("Book Title: " + book.getBookTitle());
                     System.out.println("Is Book Checked out? " + (book.getIsBookIsCheckedOut() ? "Yes" : "No")); // ChatGPT suggested ternary operator for this print statement.
                     System.out.println("---------------------------------------------");
-                    foundResult = true;
 
                 }
             }
@@ -387,7 +384,7 @@ public class NeighborhoodLibrary {
                         }
                         System.out.println(bookIDInput);
                         for (Book book : bookInventory) {
-                            if (book.getIsBookIsCheckedOut() && book != null && bookIDInput == book.getBookID()) {
+                            if (book.getIsBookIsCheckedOut() && bookIDInput == book.getBookID()) {
                                 System.out.println("\n---------------------------------------------");
                                 System.out.println("Book Entry #: " + book.getBookID());
                                 System.out.println("Book ISBN: " + book.getBookISBN());
@@ -407,7 +404,7 @@ public class NeighborhoodLibrary {
                                         System.out.println("----------------------------");
                                         continue;
                                     }
-                                    String userName = userNameInput [0].substring(0, 1).toUpperCase() + userNameInput [0].substring(1) + " " + userNameInput [1].substring(0, 1) + userNameInput [1].substring(1);
+                                    String userName = userNameInput [0].toUpperCase().charAt(0) + userNameInput [0].substring(1) + " " + userNameInput [1].toUpperCase().charAt(0) + userNameInput [1].substring(1);
 
                                     if (book.getBookIsCheckedOutTo().toLowerCase().equalsIgnoreCase(userName)) {
                                         book.checkIn(userName);
@@ -435,13 +432,15 @@ public class NeighborhoodLibrary {
                                             System.out.println("Code Broke");
                                             throw new RuntimeException();
                                         }
-                                        return;
+                                        nameConfirm = true;
+                                        checkInSelect = true;
+                                        menuConfirm = true;
+                                        keepGoing = false;
 
                                     } else {
                                         System.out.println("\n----------------------------");
                                         System.out.println("Invalid Input. Name does not match.");
                                         System.out.println("----------------------------");
-                                        continue;
                                     }
                                 }
                             }
@@ -459,7 +458,8 @@ public class NeighborhoodLibrary {
                         System.out.println("Code Broke");
                         throw new RuntimeException();
                     }
-                    return;
+                    menuConfirm = true;
+                    keepGoing = false;
                 } else {
                     System.out.println("\n----------------------------");
                     System.out.println("Invalid Input. (C) or (X).");
